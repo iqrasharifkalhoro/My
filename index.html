@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iqra Sharif Kalhoro | Personal Profile</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>IK Apparel | Modern Fashion & Clothing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,212 +14,357 @@
         }
 
         body {
-            background-color: #f8fafc;
-            color: #334155;
+            background-color: #fdfbf9;
+            color: #2b2b2b;
             line-height: 1.6;
         }
 
-        /* Container */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        h1, h2, h3, .brand-logo {
+            font-family: 'Playfair Display', serif;
         }
 
-        /* Hero / Header Card */
-        .profile-card {
-            background: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        /* Top Announcement Bar */
+        .top-bar {
+            background-color: #1a1a1a;
+            color: #fff;
             text-align: center;
-            padding: 50px 30px;
-            margin-bottom: 30px;
-            border: 1px solid #e2e8f0;
+            padding: 8px 10px;
+            font-size: 13px;
+            letter-spacing: 1px;
+            font-weight: 300;
         }
 
-        h1 {
-            font-size: 34px;
-            color: #0f172a;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .subtitle {
-            font-size: 16px;
-            color: #64748b;
-            font-weight: 500;
-            margin-bottom: 25px;
-        }
-
-        .cta-buttons {
+        /* Navigation Bar */
+        nav {
+            background: #ffffff;
             display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 10px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        .btn {
+        .brand-logo {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: #111;
             text-decoration: none;
-            padding: 12px 28px;
-            border-radius: 30px;
-            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #444;
             font-size: 14px;
-            transition: all 0.3s ease;
-            display: inline-block;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #c59b63;
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+            height: 75vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+            padding: 20px;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .hero-content p {
+            font-size: 16px;
+            margin-bottom: 25px;
+            font-weight: 300;
         }
 
         .btn-primary {
-            background: #6366f1;
-            color: #ffffff;
-            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
+            display: inline-block;
+            background: #c59b63;
+            color: #fff;
+            padding: 12px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
         }
 
         .btn-primary:hover {
-            background: #4f46e5;
+            background: #ab824e;
             transform: translateY(-2px);
         }
 
-        .btn-secondary {
-            background: #f1f5f9;
-            color: #475569;
+        /* Section Styling */
+        .section {
+            padding: 70px 8%;
         }
 
-        .btn-secondary:hover {
-            background: #e2e8f0;
-            transform: translateY(-2px);
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 8px;
+            color: #111;
         }
 
-        /* Sections Grid */
-        .section-card {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 35px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-            border: 1px solid #e2e8f0;
+        .section-subtitle {
+            text-align: center;
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 40px;
         }
 
-        h2 {
-            font-size: 20px;
-            color: #0f172a;
+        /* Product Cards Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            border: 1px solid #f0f0f0;
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            background-color: #f5f5f5;
+        }
+
+        .product-details {
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .product-category {
+            font-size: 12px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .product-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #222;
+        }
+
+        .product-price {
+            font-size: 15px;
+            color: #c59b63;
+            font-weight: 600;
             margin-bottom: 15px;
-            position: relative;
-            padding-bottom: 8px;
         }
 
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: #6366f1;
-            border-radius: 2px;
-        }
-
-        .about-text {
-            color: #475569;
-            font-size: 15px;
-        }
-
-        /* Skills Tags */
-        .tag-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .tag {
-            background: #eef2ff;
-            color: #4f46e5;
-            padding: 8px 18px;
+        .order-btn {
+            background: #111;
+            color: #fff;
+            padding: 10px 18px;
             border-radius: 20px;
+            text-decoration: none;
             font-size: 13px;
-            font-weight: 500;
+            transition: 0.3s;
+            display: block;
         }
 
-        /* Contact Details */
-        .contact-info {
-            list-style: none;
-            margin-top: 15px;
+        .order-btn:hover {
+            background: #c59b63;
         }
 
-        .contact-info li {
-            font-size: 15px;
-            color: #475569;
+        /* Contact / Order Banner */
+        .order-banner {
+            background: #f4eee6;
+            padding: 50px 8%;
+            border-radius: 16px;
+            margin: 40px 8%;
+            text-align: center;
+        }
+
+        .order-banner h2 {
+            font-size: 26px;
             margin-bottom: 10px;
-            display: flex;
-            align-items: center;
         }
 
-        .contact-info strong {
-            color: #0f172a;
-            width: 100px;
+        .order-banner p {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .whatsapp-btn {
+            background: #25d366;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            background: #1ebc59;
         }
 
         /* Footer */
         footer {
+            background: #111;
+            color: #aaa;
             text-align: center;
+            padding: 30px 20px;
             font-size: 13px;
-            color: #94a3b8;
-            margin-top: 40px;
+        }
+
+        footer p {
+            margin-bottom: 6px;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        
-        <!-- Profile Header -->
-        <header class="profile-card">
-            <h1>Iqra Sharif Kalhoro</h1>
-            <p class="subtitle">Creative Thinker • Writer • Continuous Learner</p>
-            
-            <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                <a href="#about" class="btn btn-secondary">Learn More</a>
-            </div>
-        </header>
-
-        <!-- About Section -->
-        <section id="about" class="section-card">
-            <h2>About Me</h2>
-            <p class="about-text">
-                Hello and welcome! I am Iqra Sharif Kalhoro. I am driven by curiosity, creativity, and a passion for personal growth. I enjoy working on meaningful projects, reading inspiring works, and exploring new skills that foster learning and positive impact.
-            </p>
-        </section>
-
-        <!-- Skills & Interests Section -->
-        <section class="section-card">
-            <h2>Areas of Interest & Skills</h2>
-            <div class="tag-list">
-                <span class="tag">Creative Writing</span>
-                <span class="tag">Book Editing & Formatting</span>
-                <span class="tag">Personal Development</span>
-                <span class="tag">Research</span>
-                <span class="tag">Digital Content</span>
-                <span class="tag">Critical Thinking</span>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section-card">
-            <h2>Contact Information</h2>
-            <ul class="contact-info">
-                <li><strong>Email:</strong> iqra.kalhoro@example.com</li>
-                <li><strong>Location:</strong> Sindh, Pakistan</li>
-                <li><strong>Status:</strong> Open to new learning opportunities & projects</li>
-            </ul>
-        </section>
-
-        <!-- Footer -->
-        <footer>
-            <p>© 2026 Iqra Sharif Kalhoro. All rights reserved.</p>
-        </footer>
-
+    <!-- Announcement -->
+    <div class="top-bar">
+        Free Shipping Across Pakistan on Orders Above Rs. 3,000 | Worldwide Delivery Available
     </div>
+
+    <!-- Header Navigation -->
+    <nav>
+        <a href="#" class="brand-logo">Iqra Kalhoro Collection</a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#shop">Collection</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Order / WhatsApp</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <h1>Elegance In Every Stitch</h1>
+            <p>Discover our exclusive pret, formal, and handcrafted traditional designs crafted for modern elegance.</p>
+            <a href="#shop" class="btn-primary">Shop Latest Collection</a>
+        </div>
+    </header>
+
+    <!-- Products Section -->
+    <section id="shop" class="section">
+        <h2 class="section-title">New Arrivals</h2>
+        <p class="section-subtitle">Specially curated pieces designed with premium fabrics and intricate detailing</p>
+
+        <div class="product-grid">
+            
+            <!-- Item 1 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80" alt="Embroidered Kurti" class="product-img">
+                <div class="product-details">
+                    <div>
+                        <p class="product-category">Pret Wear</p>
+                        <h3 class="product-title">Embroidered Silk Kurti</h3>
+                        <p class="product-price">PKR 4,500</p>
+                    </div>
+                    <a href="#contact" class="order-btn">Order Now</a>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=600&q=80" alt="Classic Long Dress" class="product-img">
+                <div class="product-details">
+                    <div>
+                        <p class="product-category">Luxury Pret</p>
+                        <h3 class="product-title">Flowy Long Shirt & Trousers</h3>
+                        <p class="product-price">PKR 6,800</p>
+                    </div>
+                    <a href="#contact" class="order-btn">Order Now</a>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=600&q=80" alt="Formal Ensemble" class="product-img">
+                <div class="product-details">
+                    <div>
+                        <p class="product-category">Festive Edition</p>
+                        <h3 class="product-title">Chiffon Embroidered 3-Piece</h3>
+                        <p class="product-price">PKR 9,200</p>
+                    </div>
+                    <a href="#contact" class="order-btn">Order Now</a>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&q=80" alt="Summer Casuals" class="product-img">
+                <div class="product-details">
+                    <div>
+                        <p class="product-category">Daily Casuals</p>
+                        <h3 class="product-title">Printed Lawn Co-ord Set</h3>
+                        <p class="product-price">PKR 3,600</p>
+                    </div>
+                    <a href="#contact" class="order-btn">Order Now</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- WhatsApp Order Call-to-Action -->
+    <div id="contact" class="order-banner">
+        <h2>Want Custom Stitching or Direct Orders?</h2>
+        <p>Send a screenshot of the design you like on WhatsApp to place your order or check availability.</p>
+        <a href="https://wa.me/923000000000" target="_blank" class="whatsapp-btn">Message on WhatsApp</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Iqra Kalhoro Collection. All Rights Reserved.</p>
+        <p>Designed for Timeless Grace and Fashion.</p>
+    </footer>
 
 </body>
 </html>
