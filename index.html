@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IK Apparel | Modern Fashion & Clothing</title>
+    <title>Iqra Kalhoro Collection | Modern Fashion</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -17,6 +17,7 @@
             background-color: #fdfbf9;
             color: #2b2b2b;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         h1, h2, h3, .brand-logo {
@@ -28,29 +29,31 @@
             background-color: #1a1a1a;
             color: #fff;
             text-align: center;
-            padding: 8px 10px;
-            font-size: 13px;
-            letter-spacing: 1px;
+            padding: 8px 12px;
+            font-size: 12px;
+            letter-spacing: 0.5px;
             font-weight: 300;
         }
 
-        /* Navigation Bar */
+        /* Responsive Navigation Bar */
         nav {
             background: #ffffff;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 8%;
+            padding: 15px 5%;
             border-bottom: 1px solid #eee;
             position: sticky;
             top: 0;
             z-index: 100;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .brand-logo {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             color: #111;
             text-decoration: none;
             text-transform: uppercase;
@@ -59,31 +62,59 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
             color: #444;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
             transition: color 0.3s;
+            white-space: nowrap;
         }
 
         .nav-links a:hover {
             color: #c59b63;
         }
 
+        /* Mobile specific navigation fix */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                padding: 12px 10px;
+            }
+
+            .brand-logo {
+                margin-bottom: 8px;
+                font-size: 19px;
+            }
+
+            .nav-links {
+                justify-content: center;
+                gap: 12px;
+                width: 100%;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+        }
+
         /* Hero Banner */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
-            height: 75vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+            min-height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: #ffffff;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
         .hero-content {
@@ -91,13 +122,14 @@
         }
 
         .hero-content h1 {
-            font-size: 48px;
+            font-size: 38px;
             margin-bottom: 15px;
             letter-spacing: 1px;
+            line-height: 1.2;
         }
 
         .hero-content p {
-            font-size: 16px;
+            font-size: 15px;
             margin-bottom: 25px;
             font-weight: 300;
         }
@@ -106,12 +138,11 @@
             display: inline-block;
             background: #c59b63;
             color: #fff;
-            padding: 12px 32px;
+            padding: 12px 30px;
             border-radius: 30px;
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
-            letter-spacing: 0.5px;
             transition: all 0.3s ease;
         }
 
@@ -122,12 +153,12 @@
 
         /* Section Styling */
         .section {
-            padding: 70px 8%;
+            padding: 50px 5%;
         }
 
         .section-title {
             text-align: center;
-            font-size: 32px;
+            font-size: 28px;
             margin-bottom: 8px;
             color: #111;
         }
@@ -135,15 +166,15 @@
         .section-subtitle {
             text-align: center;
             color: #777;
-            font-size: 14px;
-            margin-bottom: 40px;
+            font-size: 13px;
+            margin-bottom: 35px;
         }
 
         /* Product Cards Grid */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
         }
 
         .product-card {
@@ -163,13 +194,13 @@
 
         .product-img {
             width: 100%;
-            height: 320px;
+            height: 300px;
             object-fit: cover;
             background-color: #f5f5f5;
         }
 
         .product-details {
-            padding: 20px;
+            padding: 18px;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -178,7 +209,7 @@
         }
 
         .product-category {
-            font-size: 12px;
+            font-size: 11px;
             color: #999;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -186,7 +217,7 @@
         }
 
         .product-title {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             margin-bottom: 8px;
             color: #222;
@@ -202,7 +233,7 @@
         .order-btn {
             background: #111;
             color: #fff;
-            padding: 10px 18px;
+            padding: 9px 16px;
             border-radius: 20px;
             text-decoration: none;
             font-size: 13px;
@@ -217,19 +248,19 @@
         /* Contact / Order Banner */
         .order-banner {
             background: #f4eee6;
-            padding: 50px 8%;
+            padding: 40px 20px;
             border-radius: 16px;
-            margin: 40px 8%;
+            margin: 30px 5%;
             text-align: center;
         }
 
         .order-banner h2 {
-            font-size: 26px;
+            font-size: 22px;
             margin-bottom: 10px;
         }
 
         .order-banner p {
-            font-size: 15px;
+            font-size: 14px;
             color: #555;
             margin-bottom: 20px;
         }
@@ -237,7 +268,7 @@
         .whatsapp-btn {
             background: #25d366;
             color: #fff;
-            padding: 12px 28px;
+            padding: 12px 26px;
             border-radius: 30px;
             text-decoration: none;
             font-size: 14px;
@@ -255,12 +286,12 @@
             background: #111;
             color: #aaa;
             text-align: center;
-            padding: 30px 20px;
-            font-size: 13px;
+            padding: 25px 15px;
+            font-size: 12px;
         }
 
         footer p {
-            margin-bottom: 6px;
+            margin-bottom: 5px;
         }
     </style>
 </head>
@@ -268,7 +299,7 @@
 
     <!-- Announcement -->
     <div class="top-bar">
-        Free Shipping Across Pakistan on Orders Above Rs. 3,000 | Worldwide Delivery Available
+        Free Shipping Across Pakistan on Orders Above Rs. 3,000
     </div>
 
     <!-- Header Navigation -->
@@ -277,7 +308,6 @@
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#shop">Collection</a></li>
-            <li><a href="#about">About</a></li>
             <li><a href="#contact">Order / WhatsApp</a></li>
         </ul>
     </nav>
@@ -294,7 +324,7 @@
     <!-- Products Section -->
     <section id="shop" class="section">
         <h2 class="section-title">New Arrivals</h2>
-        <p class="section-subtitle">Specially curated pieces designed with premium fabrics and intricate detailing</p>
+        <p class="section-subtitle">Specially curated pieces designed with premium fabrics</p>
 
         <div class="product-grid">
             
@@ -356,14 +386,13 @@
     <!-- WhatsApp Order Call-to-Action -->
     <div id="contact" class="order-banner">
         <h2>Want Custom Stitching or Direct Orders?</h2>
-        <p>Send a screenshot of the design you like on WhatsApp to place your order or check availability.</p>
+        <p>Send a screenshot of the design you like on WhatsApp to place your order.</p>
         <a href="https://wa.me/923000000000" target="_blank" class="whatsapp-btn">Message on WhatsApp</a>
     </div>
 
     <!-- Footer -->
     <footer>
         <p>© 2026 Iqra Kalhoro Collection. All Rights Reserved.</p>
-        <p>Designed for Timeless Grace and Fashion.</p>
     </footer>
 
 </body>
