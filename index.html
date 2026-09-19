@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iqra Sharif Kalhoro | Personal Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Hero / Header Card */
+        .profile-card {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            padding: 50px 30px;
+            margin-bottom: 30px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: 700;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.25);
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #0f172a;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #64748b;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #6366f1;
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #4f46e5;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #f1f5f9;
+            color: #475569;
+        }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+            transform: translateY(-2px);
+        }
+
+        /* Sections Grid */
+        .section-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e2e8f0;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: #0f172a;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #6366f1;
+            border-radius: 2px;
+        }
+
+        .about-text {
+            color: #475569;
+            font-size: 15px;
+        }
+
+        /* Skills Tags */
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: #eef2ff;
+            color: #4f46e5;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        /* Contact Details */
+        .contact-info {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .contact-info li {
+            font-size: 15px;
+            color: #475569;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info strong {
+            color: #0f172a;
+            width: 100px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            font-size: 13px;
+            color: #94a3b8;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Profile Header -->
+        <header class="profile-card">
+            <!-- Initials Avatar -->
+            <div class="avatar">IK</div>
+            
+            <h1>Iqra Sharif Kalhoro</h1>
+            <p class="subtitle">Creative Thinker • Writer • Continuous Learner</p>
+            
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                <a href="#about" class="btn btn-secondary">Learn More</a>
+            </div>
+        </header>
+
+        <!-- About Section -->
+        <section id="about" class="section-card">
+            <h2>About Me</h2>
+            <p class="about-text">
+                Hello and welcome! I am Iqra Sharif Kalhoro. I am driven by curiosity, creativity, and a passion for personal growth. I enjoy working on meaningful projects, reading inspiring works, and exploring new skills that foster learning and positive impact.
+            </p>
+        </section>
+
+        <!-- Skills & Interests Section -->
+        <section class="section-card">
+            <h2>Areas of Interest & Skills</h2>
+            <div class="tag-list">
+                <span class="tag">Creative Writing</span>
+                <span class="tag">Book Editing & Formatting</span>
+                <span class="tag">Personal Development</span>
+                <span class="tag">Research</span>
+                <span class="tag">Digital Content</span>
+                <span class="tag">Critical Thinking</span>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-card">
+            <h2>Contact Information</h2>
+            <ul class="contact-info">
+                <li><strong>Email:</strong> iqra.kalhoro@example.com</li>
+                <li><strong>Location:</strong> Sindh, Pakistan</li>
+                <li><strong>Status:</strong> Open to new learning opportunities & projects</li>
+            </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2026 Iqra Sharif Kalhoro. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
