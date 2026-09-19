@@ -3,31 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iqra Kalhoro Collection | Modern Fashion</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>IK Beauty & Makeup Studio | Glam & Cosmetics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Montserrat', sans-serif;
         }
 
         body {
-            background-color: #fdfbf9;
-            color: #2b2b2b;
+            background-color: #fdfbfb;
+            color: #333333;
             line-height: 1.6;
             overflow-x: hidden;
         }
 
         h1, h2, h3, .brand-logo {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 1px;
         }
 
-        /* Top Announcement Bar */
+        /* Top Bar */
         .top-bar {
-            background-color: #1a1a1a;
-            color: #fff;
+            background-color: #2b2024;
+            color: #fcece8;
             text-align: center;
             padding: 8px 12px;
             font-size: 12px;
@@ -35,41 +36,44 @@
             font-weight: 300;
         }
 
-        /* Responsive Navigation Bar */
+        /* Navigation Bar */
         nav {
             background: #ffffff;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 5%;
-            border-bottom: 1px solid #eee;
+            padding: 18px 6%;
+            border-bottom: 1px solid #f0e6e6;
             position: sticky;
             top: 0;
             z-index: 100;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
         }
 
         .brand-logo {
-            font-size: 20px;
+            font-size: 24px;
             font-weight: 700;
-            letter-spacing: 1px;
-            color: #111;
+            color: #2b2024;
             text-decoration: none;
             text-transform: uppercase;
+        }
+
+        .brand-logo span {
+            color: #d48b91;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 15px;
+            gap: 18px;
             flex-wrap: wrap;
             align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #444;
+            color: #555;
             font-size: 13px;
             font-weight: 500;
             transition: color 0.3s;
@@ -77,26 +81,26 @@
         }
 
         .nav-links a:hover {
-            color: #c59b63;
+            color: #d48b91;
         }
 
-        /* Mobile specific navigation fix */
+        /* Mobile specific nav layout */
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
                 justify-content: center;
                 text-align: center;
-                padding: 12px 10px;
+                padding: 14px 10px;
             }
 
             .brand-logo {
-                margin-bottom: 8px;
-                font-size: 19px;
+                font-size: 22px;
+                margin-bottom: 4px;
             }
 
             .nav-links {
                 justify-content: center;
-                gap: 12px;
+                gap: 14px;
                 width: 100%;
             }
 
@@ -107,8 +111,8 @@
 
         /* Hero Banner */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
-            min-height: 70vh;
+            background: linear-gradient(rgba(30, 20, 25, 0.45), rgba(30, 20, 25, 0.45)), url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+            min-height: 72vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -122,85 +126,88 @@
         }
 
         .hero-content h1 {
-            font-size: 38px;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
+            font-size: 44px;
+            margin-bottom: 12px;
             line-height: 1.2;
+            font-weight: 700;
         }
 
         .hero-content p {
             font-size: 15px;
             margin-bottom: 25px;
             font-weight: 300;
+            color: #f7ebe8;
         }
 
         .btn-primary {
             display: inline-block;
-            background: #c59b63;
-            color: #fff;
+            background: #d48b91;
+            color: #ffffff;
             padding: 12px 30px;
             border-radius: 30px;
             text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             transition: all 0.3s ease;
         }
 
         .btn-primary:hover {
-            background: #ab824e;
+            background: #be757b;
             transform: translateY(-2px);
         }
 
-        /* Section Styling */
+        /* Section Setup */
         .section {
-            padding: 50px 5%;
+            padding: 55px 6%;
         }
 
         .section-title {
             text-align: center;
-            font-size: 28px;
-            margin-bottom: 8px;
-            color: #111;
+            font-size: 32px;
+            margin-bottom: 6px;
+            color: #2b2024;
         }
 
         .section-subtitle {
             text-align: center;
-            color: #777;
+            color: #8c8285;
             font-size: 13px;
-            margin-bottom: 35px;
+            margin-bottom: 40px;
         }
 
-        /* Product Cards Grid */
-        .product-grid {
+        /* Makeup Cards Grid */
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
         }
 
-        .product-card {
-            background: #fff;
-            border-radius: 12px;
+        .card {
+            background: #ffffff;
+            border-radius: 14px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-            border: 1px solid #f0f0f0;
-            transition: transform 0.3s;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+            border: 1px solid #f5ecec;
             display: flex;
             flex-direction: column;
+            transition: transform 0.3s;
         }
 
-        .product-card:hover {
+        .card:hover {
             transform: translateY(-5px);
         }
 
-        .product-img {
+        .card-img {
             width: 100%;
-            height: 300px;
+            height: 270px;
             object-fit: cover;
-            background-color: #f5f5f5;
+            background-color: #f9f4f4;
         }
 
-        .product-details {
-            padding: 18px;
+        .card-details {
+            padding: 20px;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -208,71 +215,86 @@
             justify-content: space-between;
         }
 
-        .product-category {
+        .card-tag {
             font-size: 11px;
-            color: #999;
+            color: #d48b91;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-weight: 600;
             margin-bottom: 5px;
         }
 
-        .product-title {
-            font-size: 15px;
+        .card-title {
+            font-size: 18px;
             font-weight: 600;
-            margin-bottom: 8px;
-            color: #222;
+            margin-bottom: 6px;
+            color: #2b2024;
         }
 
-        .product-price {
-            font-size: 15px;
-            color: #c59b63;
+        .card-desc {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .card-price {
+            font-size: 16px;
+            color: #2b2024;
             font-weight: 600;
             margin-bottom: 15px;
         }
 
-        .order-btn {
-            background: #111;
-            color: #fff;
-            padding: 9px 16px;
-            border-radius: 20px;
+        .book-btn {
+            background: #2b2024;
+            color: #ffffff;
+            padding: 10px 18px;
+            border-radius: 25px;
             text-decoration: none;
-            font-size: 13px;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
             transition: 0.3s;
             display: block;
         }
 
-        .order-btn:hover {
-            background: #c59b63;
+        .book-btn:hover {
+            background: #d48b91;
         }
 
-        /* Contact / Order Banner */
-        .order-banner {
-            background: #f4eee6;
-            padding: 40px 20px;
-            border-radius: 16px;
-            margin: 30px 5%;
+        /* Booking / WhatsApp Banner */
+        .booking-banner {
+            background: #faedf0;
+            padding: 45px 20px;
+            border-radius: 18px;
+            margin: 20px 6% 40px;
             text-align: center;
+            border: 1px solid #f2dbe0;
         }
 
-        .order-banner h2 {
-            font-size: 22px;
+        .booking-banner h2 {
+            font-size: 26px;
+            color: #2b2024;
             margin-bottom: 10px;
         }
 
-        .order-banner p {
+        .booking-banner p {
             font-size: 14px;
-            color: #555;
-            margin-bottom: 20px;
+            color: #6d6265;
+            margin-bottom: 22px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .whatsapp-btn {
             background: #25d366;
-            color: #fff;
-            padding: 12px 26px;
+            color: #ffffff;
+            padding: 12px 28px;
             border-radius: 30px;
             text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
             display: inline-block;
             transition: 0.3s;
         }
@@ -283,116 +305,121 @@
 
         /* Footer */
         footer {
-            background: #111;
-            color: #aaa;
+            background: #201719;
+            color: #a39598;
             text-align: center;
-            padding: 25px 15px;
+            padding: 30px 15px;
             font-size: 12px;
         }
 
         footer p {
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Announcement -->
+    <!-- Top Announcement -->
     <div class="top-bar">
-        Free Shipping Across Pakistan on Orders Above Rs. 3,000
+        Book Your Bridal & Event Glam Online | Limited Weekend Slots
     </div>
 
-    <!-- Header Navigation -->
+    <!-- Navigation -->
     <nav>
-        <a href="#" class="brand-logo">Iqra Kalhoro Collection</a>
+        <a href="#" class="brand-logo">IK <span>Beauty</span></a>
         <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#shop">Collection</a></li>
-            <li><a href="#contact">Order / WhatsApp</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#gallery">Collection</a></li>
+            <li><a href="#booking">Book Appointment</a></li>
         </ul>
     </nav>
 
     <!-- Hero Section -->
-    <header id="home" class="hero">
+    <header class="hero">
         <div class="hero-content">
-            <h1>Elegance In Every Stitch</h1>
-            <p>Discover our exclusive pret, formal, and handcrafted traditional designs crafted for modern elegance.</p>
-            <a href="#shop" class="btn-primary">Shop Latest Collection</a>
+            <h1>Enhance Your Natural Radiance</h1>
+            <p>Signature bridal transformations, party glam, and luxury beauty treatments crafted to make your moments unforgettable.</p>
+            <a href="#booking" class="btn-primary">Book Your Glam</a>
         </div>
     </header>
 
-    <!-- Products Section -->
-    <section id="shop" class="section">
-        <h2 class="section-title">New Arrivals</h2>
-        <p class="section-subtitle">Specially curated pieces designed with premium fabrics</p>
+    <!-- Services / Products Grid -->
+    <section id="services" class="section">
+        <h2 class="section-title">Makeup & Glam Packages</h2>
+        <p class="section-subtitle">Flawless looks curated with premium international cosmetics</p>
 
-        <div class="product-grid">
+        <div class="grid">
             
-            <!-- Item 1 -->
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80" alt="Embroidered Kurti" class="product-img">
-                <div class="product-details">
+            <!-- Service 1 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80" alt="Bridal Makeup" class="card-img">
+                <div class="card-details">
                     <div>
-                        <p class="product-category">Pret Wear</p>
-                        <h3 class="product-title">Embroidered Silk Kurti</h3>
-                        <p class="product-price">PKR 4,500</p>
+                        <p class="card-tag">Signature Look</p>
+                        <h3 class="card-title">Traditional Bridal Glam</h3>
+                        <p class="card-desc">Long-lasting HD makeup, hairstyling, lashes, and jewelry setting.</p>
+                        <p class="card-price">PKR 25,000</p>
                     </div>
-                    <a href="#contact" class="order-btn">Order Now</a>
+                    <a href="#booking" class="book-btn">Book Slot</a>
                 </div>
             </div>
 
-            <!-- Item 2 -->
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=600&q=80" alt="Classic Long Dress" class="product-img">
-                <div class="product-details">
+            <!-- Service 2 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=600&q=80" alt="Party Makeup" class="card-img">
+                <div class="card-details">
                     <div>
-                        <p class="product-category">Luxury Pret</p>
-                        <h3 class="product-title">Flowy Long Shirt & Trousers</h3>
-                        <p class="product-price">PKR 6,800</p>
+                        <p class="card-tag">Special Occasions</p>
+                        <h3 class="card-title">Evening Party Glam</h3>
+                        <p class="card-desc">Soft glow or smokey eyes finish with blowdry or curls.</p>
+                        <p class="card-price">PKR 7,500</p>
                     </div>
-                    <a href="#contact" class="order-btn">Order Now</a>
+                    <a href="#booking" class="book-btn">Book Slot</a>
                 </div>
             </div>
 
-            <!-- Item 3 -->
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=600&q=80" alt="Formal Ensemble" class="product-img">
-                <div class="product-details">
+            <!-- Service 3 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80" alt="Engagement / Nikah" class="card-img">
+                <div class="card-details">
                     <div>
-                        <p class="product-category">Festive Edition</p>
-                        <h3 class="product-title">Chiffon Embroidered 3-Piece</h3>
-                        <p class="product-price">PKR 9,200</p>
+                        <p class="card-tag">Nikah & Reception</p>
+                        <h3 class="card-title">Soft Dewy Nikah Look</h3>
+                        <p class="card-desc">Subtle radiant finish with elegant floral or braid styling.</p>
+                        <p class="card-price">PKR 14,000</p>
                     </div>
-                    <a href="#contact" class="order-btn">Order Now</a>
+                    <a href="#booking" class="book-btn">Book Slot</a>
                 </div>
             </div>
 
-            <!-- Item 4 -->
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&q=80" alt="Summer Casuals" class="product-img">
-                <div class="product-details">
+            <!-- Service 4 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=80" alt="Beauty Cosmetics" class="card-img">
+                <div class="card-details">
                     <div>
-                        <p class="product-category">Daily Casuals</p>
-                        <h3 class="product-title">Printed Lawn Co-ord Set</h3>
-                        <p class="product-price">PKR 3,600</p>
+                        <p class="card-tag">Cosmetics</p>
+                        <h3 class="card-title">Luxury Lip & Glow Kit</h3>
+                        <p class="card-desc">Exclusive curated beauty essentials for an everyday soft glow.</p>
+                        <p class="card-price">PKR 3,500</p>
                     </div>
-                    <a href="#contact" class="order-btn">Order Now</a>
+                    <a href="#booking" class="book-btn">Order Kit</a>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- WhatsApp Order Call-to-Action -->
-    <div id="contact" class="order-banner">
-        <h2>Want Custom Stitching or Direct Orders?</h2>
-        <p>Send a screenshot of the design you like on WhatsApp to place your order.</p>
-        <a href="https://wa.me/923000000000" target="_blank" class="whatsapp-btn">Message on WhatsApp</a>
+    <!-- Booking / WhatsApp Banner -->
+    <div id="booking" class="booking-banner">
+        <h2>Ready to Shine on Your Big Day?</h2>
+        <p>Get in touch on WhatsApp to confirm dates, discuss custom looks, or order products.</p>
+        <a href="https://wa.me/923000000000" target="_blank" class="whatsapp-btn">Chat on WhatsApp</a>
     </div>
 
     <!-- Footer -->
     <footer>
-        <p>© 2026 Iqra Kalhoro Collection. All Rights Reserved.</p>
+        <p>© 2026 IK Beauty Studio. All Rights Reserved.</p>
+        <p>Dedicated to Elegance, Confidence, and Beauty.</p>
     </footer>
 
 </body>
