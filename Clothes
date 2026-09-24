@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IK Apparel | Online Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: #fbf9f6; color: #2b2b2b; padding-bottom: 60px; overflow-x: hidden; }
+        h1, h2, h3, .brand-logo { font-family: 'Playfair Display', serif; }
+
+        .top-bar { background-color: #1a1a1a; color: #fff; text-align: center; padding: 8px 12px; font-size: 12px; }
+        nav { background: #ffffff; display: flex; justify-content: space-between; align-items: center; padding: 15px 6%; border-bottom: 1px solid #ede8e3; position: sticky; top: 0; z-index: 100; }
+        .brand-logo { font-size: 20px; font-weight: 700; color: #111; text-decoration: none; text-transform: uppercase; }
+        
+        .cart-icon-btn { background: #111; color: #fff; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 13px; display: flex; align-items: center; gap: 8px; }
+        .cart-badge { background: #c59b63; color: #fff; border-radius: 50%; padding: 2px 7px; font-size: 11px; font-weight: bold; }
+
+        .hero { background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200') center/cover no-repeat; color: white; text-align: center; padding: 50px 20px; }
+        .hero h1 { font-size: 32px; margin-bottom: 8px; }
+
+        .container { max-width: 1050px; margin: 0 auto; padding: 40px 20px; }
+        .section-title { text-align: center; font-size: 26px; margin-bottom: 25px; }
+
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
+        .product-card { background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid #ede8e3; box-shadow: 0 4px 15px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between; }
+        .product-img { width: 100%; height: 290px; object-fit: cover; background-color: #f7f7f7; }
+        .product-details { padding: 16px; text-align: center; }
+        .product-name { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+        .product-price { font-size: 15px; color: #c59b63; font-weight: 600; margin-bottom: 12px; }
+
+        .add-btn { background: #111; color: #fff; border: none; width: 100%; padding: 10px; border-radius: 20px; font-size: 13px; cursor: pointer; transition: 0.3s; }
+        .add-btn:hover { background: #c59b63; }
+
+        /* Cart */
+        .cart-modal { position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px; height: 100vh; background: #fff; box-shadow: -5px 0 25px rgba(0,0,0,0.2); transition: 0.4s ease; z-index: 1000; display: flex; flex-direction: column; padding: 20px; }
+        .cart-modal.open { right: 0; }
+        .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 12px; margin-bottom: 15px; }
+        .close-cart { background: none; border: none; font-size: 24px; cursor: pointer; }
+        .cart-items { flex-grow: 1; overflow-y: auto; margin-bottom: 15px; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #f2f2f2; font-size: 13px; }
+        .remove-btn { color: #e53935; background: none; border: none; cursor: pointer; font-size: 11px; }
+
+        .checkout-box input, .checkout-box textarea { width: 100%; padding: 10px; margin-bottom: 8px; border: 1px solid #ddd; border-radius: 8px; font-size: 13px; }
+        .total-price { font-size: 16px; font-weight: 700; margin: 10px 0; display: flex; justify-content: space-between; }
+        .order-btn { background: #25d366; color: #fff; border: none; width: 100%; padding: 12px; border-radius: 25px; font-size: 14px; font-weight: 600; cursor: pointer; }
+
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 900; }
+        .overlay.active { display: block; }
+        #loading { text-align: center; font-size: 16px; color: #888; grid-column: 1 / -1; }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">Cash on Delivery Across Pakistan | Easy Order</div>
+
+    <nav>
+        <a href="#" class="brand-logo">IK Apparel</a>
+        <button class="cart-icon-btn" onclick="toggleCart()">
+            🛒 Bag <span class="cart-badge" id="cart-count">0</span>
+        </button>
+    </nav>
+
+    <header class="hero">
+        <h1>Handcrafted Elegance</h1>
+        <p>Direct from our workshop to your doorstep</p>
+    </header>
+
+    <div class="container">
+        <h2 class="section-title">Latest Clothes Collection</h2>
+        <div class="product-grid" id="product-container">
+            <p id="loading">Loading fresh collection...</p>
+        </div>
+    </div>
+
+    <!-- Shopping Cart -->
+    <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-header">
+            <h3>Your Shopping Bag</h3>
+            <button class="close-cart" onclick="toggleCart()">✕</button>
+        </div>
+
+        <div class="cart-items" id="cart-items">
+            <p style="text-align:center; color:#888; margin-top:20px;">Your bag is empty.</p>
+        </div>
+
+        <div class="checkout-box">
+            <div class="total-price">
+                <span>Total:</span>
+                <span id="cart-total">Rs. 0</span>
+            </div>
+            
+            <input type="text" id="cust-name" placeholder="Your Name" required>
+            <input type="tel" id="cust-phone" placeholder="Phone Number" required>
+            <textarea id="cust-address" rows="2" placeholder="Delivery Address & City" required></textarea>
+
+            <button class="order-btn" onclick="sendOrder()">Confirm Order via WhatsApp</button>
+        </div>
+    </div>
+
+    <script>
+        // 1. APNA WHATSAPP NUMBER YAHAN DALEIN
+        const myWhatsAppNumber = "923000000000";
+
+        // 2. APNI GOOGLE SHEET KA CSV LINK YAHAN PASTE KAREIN
+        const sheetCsvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTE-REPLACE_WITH_YOUR_LINK/pub?gid=0&single=true&output=csv";
+
+        let products = [];
+        let cart = [];
+
+        // Google Sheet se data laane ka function
+        async function fetchProductsFromSheet() {
+            try {
+                const response = await fetch(sheetCsvUrl);
+                const data = await response.text();
+                
+                // CSV parsing
+                const rows = data.split('\n').map(row => row.trim()).filter(row => row);
+                const items = [];
+
+                // Row 0 heading hoti hai, Row 1 se data shuru hota hai
+                for (let i = 1; i < rows.length; i++) {
+                    const cols = rows[i].split(',');
+                    if (cols.length >= 3) {
+                        items.push({
+                            name: cols[0].replace(/"/g, '').trim(),
+                            price: cols[1].replace(/"/g, '').trim(),
+                            img: cols[2].replace(/"/g, '').trim()
+                        });
+                    }
+                }
+
+                products = items;
+                renderProducts();
+            } catch (error) {
+                console.error("Error loading products:", error);
+                document.getElementById('loading').innerText = "Could not load products. Please check Google Sheet link.";
+            }
+        }
+
+        function renderProducts() {
+            const container = document.getElementById('product-container');
+            container.innerHTML = '';
+
+            if (products.length === 0) {
+                container.innerHTML = '<p id="loading">No products available right now.</p>';
+                return;
+            }
+
+            products.forEach((prod) => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <img src="${prod.img}" alt="${prod.name}" class="product-img" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+                    <div class="product-details">
+                        <h3 class="product-name">${prod.name}</h3>
+                        <p class="product-price">Rs. ${Number(prod.price).toLocaleString()}</p>
+                        <button class="add-btn" onclick="addToCart('${prod.name.replace(/'/g, "\\'")}', ${prod.price})">Add to Bag</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function toggleCart() {
+            document.getElementById('cart-modal').classList.toggle('open');
+            document.getElementById('overlay').classList.toggle('active');
+        }
+
+        function addToCart(title, price) {
+            cart.push({ title, price: Number(price) });
+            updateCartUI();
+            toggleCart();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            document.getElementById('cart-count').innerText = cart.length;
+            const cartItemsContainer = document.getElementById('cart-items');
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p style="text-align:center; color:#888; margin-top:20px;">Your bag is empty.</p>';
+                document.getElementById('cart-total').innerText = 'Rs. 0';
+                return;
+            }
+
+            let total = 0;
+            cartItemsContainer.innerHTML = '';
+            
+            cart.forEach((item, index) => {
+                total += item.price;
+                const div = document.createElement('div');
+                div.className = 'cart-item';
+                div.innerHTML = `
+                    <div>
+                        <strong>${item.title}</strong><br>
+                        <small>Rs. ${item.price.toLocaleString()}</small>
+                    </div>
+                    <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+                `;
+                cartItemsContainer.appendChild(div);
+            });
+
+            document.getElementById('cart-total').innerText = 'Rs. ' + total.toLocaleString();
+        }
+
+        function sendOrder() {
+            if (cart.length === 0) {
+                alert("Please add items to your bag first!");
+                return;
+            }
+
+            const name = document.getElementById('cust-name').value.trim();
+            const phone = document.getElementById('cust-phone').value.trim();
+            const address = document.getElementById('cust-address').value.trim();
+
+            if (!name || !phone || !address) {
+                alert("Please fill your Name, Phone Number, and Address!");
+                return;
+            }
+
+            let total = 0;
+            let itemsList = "";
+            cart.forEach((item, i) => {
+                total += item.price;
+                itemsList += `${i + 1}. ${item.title} - Rs. ${item.price.toLocaleString()}\n`;
+            });
+
+            const message = `*NEW ORDER RECEIVED*\n\n` +
+                `*Customer Details:*\n` +
+                `Name: ${name}\n` +
+                `Phone: ${phone}\n` +
+                `Address: ${address}\n\n` +
+                `*Items Ordered:*\n${itemsList}\n` +
+                `*Total Amount:* Rs. ${total.toLocaleString()}\n` +
+                `*Payment:* Cash on Delivery (COD)`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const waUrl = `https://wa.me/${myWhatsAppNumber}?text=${encodedMessage}`;
+            
+            window.open(waUrl, '_blank');
+        }
+
+        // Run
+        fetchProductsProducts = fetchProductsFromSheet();
+    </script>
+</body>
+</html>
