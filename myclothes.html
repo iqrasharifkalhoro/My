@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IK Apparel | Clothing Store & Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #fbf9f6;
+            color: #2b2b2b;
+            padding-bottom: 60px;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .brand-logo {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            padding: 8px 12px;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Nav */
+        nav {
+            background: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 6%;
+            border-bottom: 1px solid #ede8e3;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand-logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #111;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .cart-icon-btn {
+            background: #111;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cart-badge {
+            background: #c59b63;
+            color: #fff;
+            border-radius: 50%;
+            padding: 2px 7px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .hero p {
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .section-title {
+            font-size: 26px;
+        }
+
+        .admin-trigger-btn {
+            background: #f0e6d8;
+            color: #7a5828;
+            border: 1px solid #d4c2ab;
+            padding: 7px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Products Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #ede8e3;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 290px;
+            object-fit: cover;
+            background-color: #f7f7f7;
+        }
+
+        .product-details {
+            padding: 16px;
+            text-align: center;
+        }
+
+        .product-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #222;
+        }
+
+        .product-price {
+            font-size: 15px;
+            color: #c59b63;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .add-btn {
+            background: #111;
+            color: #fff;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .add-btn:hover {
+            background: #c59b63;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #e53935;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            display: none; /* Only shown to admin */
+        }
+
+        /* Admin Add Product Modal */
+        .admin-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+            width: 90%;
+            max-width: 450px;
+            z-index: 1200;
+        }
+
+        .admin-modal h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #555;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+
+        .save-btn {
+            background: #c59b63;
+            color: #fff;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .close-admin-btn {
+            background: #eee;
+            color: #333;
+            border: none;
+            width: 100%;
+            padding: 9px;
+            border-radius: 25px;
+            font-size: 12px;
+            margin-top: 8px;
+            cursor: pointer;
+        }
+
+        /* Cart Sliding Panel */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            background: #fff;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.2);
+            transition: 0.4s ease;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .cart-modal.open {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+            margin-bottom: 15px;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin-bottom: 15px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f2f2f2;
+            font-size: 13px;
+        }
+
+        .remove-btn {
+            color: #e53935;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 11px;
+            margin-left: 8px;
+        }
+
+        .checkout-box input, .checkout-box textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 8px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+
+        .total-price {
+            font-size: 16px;
+            font-weight: 700;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .order-btn {
+            background: #25d366;
+            color: #fff;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 900;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">Cash on Delivery Across Pakistan | Direct WhatsApp Orders</div>
+
+    <nav>
+        <a href="#" class="brand-logo">IK Apparel</a>
+        <button class="cart-icon-btn" onclick="toggleCart()">
+            🛒 Bag <span class="cart-badge" id="cart-count">0</span>
+        </button>
+    </nav>
+
+    <header class="hero">
+        <h1>Handcrafted Elegance</h1>
+        <p>Select your favorite pieces and order directly</p>
+    </header>
+
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Latest Clothes Collection</h2>
+            <button class="admin-trigger-btn" onclick="handleAdminLogin()">⚙️ Admin: Add Dress</button>
+        </div>
+        
+        <div class="product-grid" id="product-container">
+            <!-- Products will be loaded automatically by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Admin Form Modal -->
+    <div class="admin-modal" id="admin-modal">
+        <h3>Add New Dress</h3>
+        <div class="form-group">
+            <label>Dress Name:</label>
+            <input type="text" id="new-prod-name" placeholder="e.g. Lawn Embroidered Suit">
+        </div>
+        <div class="form-group">
+            <label>Price (PKR):</label>
+            <input type="number" id="new-prod-price" placeholder="e.g. 4500">
+        </div>
+        <div class="form-group">
+            <label>Select Photo (From Gallery):</label>
+            <input type="file" id="new-prod-image" accept="image/*">
+        </div>
+        <button class="save-btn" onclick="saveNewProduct()">Save & Publish</button>
+        <button class="close-admin-btn" onclick="closeAdminModal()">Cancel</button>
+    </div>
+
+    <!-- Sliding Shopping Cart -->
+    <div class="overlay" id="overlay" onclick="closeAllModals()"></div>
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-header">
+            <h3>Your Shopping Bag</h3>
+            <button class="close-cart" onclick="toggleCart()">✕</button>
+        </div>
+
+        <div class="cart-items" id="cart-items">
+            <p style="text-align:center; color:#888; margin-top:20px;">Your bag is empty.</p>
+        </div>
+
+        <div class="checkout-box">
+            <div class="total-price">
+                <span>Total:</span>
+                <span id="cart-total">Rs. 0</span>
+            </div>
+            
+            <input type="text" id="cust-name" placeholder="Your Name" required>
+            <input type="tel" id="cust-phone" placeholder="Phone Number" required>
+            <textarea id="cust-address" rows="2" placeholder="Full Delivery Address & City" required></textarea>
+
+            <button class="order-btn" onclick="sendOrder()">Confirm Order via WhatsApp</button>
+        </div>
+    </div>
+
+    <script>
+        // 1. APNA WHATSAPP NUMBER YAHAN DALEIN (Country code 92 k sath)
+        const myWhatsAppNumber = "923000000000";
+
+        // Admin Secret Password
+        const ADMIN_PASSWORD = "admin123";
+        let isAdminLoggedIn = false;
+
+        // Default Sample Products
+        const defaultProducts = [
+            {
+                id: 1,
+                name: "Embroidered Silk Kurti",
+                price: 4500,
+                img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 2,
+                name: "Flowy Long Suit",
+                price: 6800,
+                img: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 3,
+                name: "Chiffon Festive 3-Piece",
+                price: 9200,
+                img: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=600&q=80"
+            }
+        ];
+
+        // Load Products from LocalStorage or Defaults
+        let products = JSON.parse(localStorage.getItem('my_clothing_store_items')) || defaultProducts;
+        let cart = [];
+
+        function renderProducts() {
+            const container = document.getElementById('product-container');
+            container.innerHTML = '';
+
+            products.forEach((prod, index) => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <button class="delete-btn" style="display: ${isAdminLoggedIn ? 'block' : 'none'};" onclick="deleteProduct(${index})">✕ Delete</button>
+                    <img src="${prod.img}" alt="${prod.name}" class="product-img">
+                    <div class="product-details">
+                        <h3 class="product-name">${prod.name}</h3>
+                        <p class="product-price">Rs. ${Number(prod.price).toLocaleString()}</p>
+                        <button class="add-btn" onclick="addToCart('${prod.name}', ${prod.price})">Add to Bag</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Admin Login
+        function handleAdminLogin() {
+            if (!isAdminLoggedIn) {
+                const pass = prompt("Enter Admin Password:");
+                if (pass === ADMIN_PASSWORD) {
+                    isAdminLoggedIn = true;
+                    alert("Admin mode active! You can now Add or Delete dresses.");
+                    openAdminModal();
+                    renderProducts();
+                } else if (pass !== null) {
+                    alert("Incorrect Password!");
+                }
+            } else {
+                openAdminModal();
+            }
+        }
+
+        function openAdminModal() {
+            document.getElementById('admin-modal').style.display = 'block';
+            document.getElementById('overlay').classList.add('active');
+        }
+
+        function closeAdminModal() {
+            document.getElementById('admin-modal').style.display = 'none';
+            document.getElementById('overlay').classList.remove('active');
+        }
+
+        function closeAllModals() {
+            closeAdminModal();
+            document.getElementById('cart-modal').classList.remove('open');
+            document.getElementById('overlay').classList.remove('active');
+        }
+
+        // Add Product Form Action
+        function saveNewProduct() {
+            const name = document.getElementById('new-prod-name').value.trim();
+            const price = document.getElementById('new-prod-price').value.trim();
+            const fileInput = document.getElementById('new-prod-image');
+
+            if (!name || !price) {
+                alert("Please enter both Name and Price!");
+                return;
+            }
+
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const newProduct = {
+                        id: Date.now(),
+                        name: name,
+                        price: Number(price),
+                        img: e.target.result // Base64 image from user mobile/PC
+                    };
+                    products.unshift(newProduct);
+                    localStorage.setItem('my_clothing_store_items', JSON.stringify(products));
+                    renderProducts();
+                    closeAdminModal();
+                    // Clear inputs
+                    document.getElementById('new-prod-name').value = '';
+                    document.getElementById('new-prod-price').value = '';
+                    fileInput.value = '';
+                    alert("New dress added successfully!");
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                alert("Please select an image for the dress!");
+            }
+        }
+
+        // Delete Product
+        function deleteProduct(index) {
+            if (confirm("Are you sure you want to delete this dress from website?")) {
+                products.splice(index, 1);
+                localStorage.setItem('my_clothing_store_items', JSON.stringify(products));
+                renderProducts();
+            }
+        }
+
+        // Cart Actions
+        function toggleCart() {
+            document.getElementById('cart-modal').classList.toggle('open');
+            document.getElementById('overlay').classList.toggle('active');
+        }
+
+        function addToCart(title, price) {
+            cart.push({ title, price });
+            updateCartUI();
+            toggleCart();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            document.getElementById('cart-count').innerText = cart.length;
+            const cartItemsContainer = document.getElementById('cart-items');
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p style="text-align:center; color:#888; margin-top:20px;">Your bag is empty.</p>';
+                document.getElementById('cart-total').innerText = 'Rs. 0';
+                return;
+            }
+
+            let total = 0;
+            cartItemsContainer.innerHTML = '';
+            
+            cart.forEach((item, index) => {
+                total += Number(item.price);
+                const div = document.createElement('div');
+                div.className = 'cart-item';
+                div.innerHTML = `
+                    <div>
+                        <strong>${item.title}</strong><br>
+                        <small>Rs. ${Number(item.price).toLocaleString()}</small>
+                    </div>
+                    <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+                `;
+                cartItemsContainer.appendChild(div);
+            });
+
+            document.getElementById('cart-total').innerText = 'Rs. ' + total.toLocaleString();
+        }
+
+        // Send Order to WhatsApp
+        function sendOrder() {
+            if (cart.length === 0) {
+                alert("Please add items to your bag first!");
+                return;
+            }
+
+            const name = document.getElementById('cust-name').value.trim();
+            const phone = document.getElementById('cust-phone').value.trim();
+            const address = document.getElementById('cust-address').value.trim();
+
+            if (!name || !phone || !address) {
+                alert("Please fill your Name, Phone Number, and Address!");
+                return;
+            }
+
+            let total = 0;
+            let itemsList = "";
+            cart.forEach((item, i) => {
+                total += Number(item.price);
+                itemsList += `${i + 1}. ${item.title} - Rs. ${Number(item.price).toLocaleString()}\n`;
+            });
+
+            const message = `*NEW ORDER RECEIVED*\n\n` +
+                `*Customer Details:*\n` +
+                `Name: ${name}\n` +
+                `Phone: ${phone}\n` +
+                `Address: ${address}\n\n` +
+                `*Items Ordered:*\n${itemsList}\n` +
+                `*Total Amount:* Rs. ${total.toLocaleString()}\n` +
+                `*Payment:* Cash on Delivery (COD)`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const waUrl = `https://wa.me/${myWhatsAppNumber}?text=${encodedMessage}`;
+            
+            window.open(waUrl, '_blank');
+        }
+
+        // Initial Render
+        renderProducts();
+    </script>
+</body>
+</html>
