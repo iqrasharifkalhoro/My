@@ -1,556 +1,241 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iqra Sharif | Creative Web Designer & Developer</title>
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
-          },
-          colors: {
-            brand: {
-              50: '#f0f7ff',
-              100: '#e0effe',
-              400: '#38bdf8',
-              500: '#0284c7',
-              600: '#0369a1',
-              violet: '#6366f1',
-              rose: '#f43f5e'
-            }
-          },
-          animation: {
-            'blob': 'blob 7s infinite',
-            'float': 'float 4s ease-in-out infinite',
-          },
-          keyframes: {
-            blob: {
-              '0%': { transform: 'translate(0px, 0px) scale(1)' },
-              '33%': { transform: 'translate(25px, -35px) scale(1.08)' },
-              '66%': { transform: 'translate(-20px, 20px) scale(0.94)' },
-              '100%': { transform: 'translate(0px, 0px) scale(1)' },
-            },
-            float: {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-8px)' },
-            }
-          }
-        }
-      }
-    }
-  </script>
-
-  <!-- Google Fonts: Plus Jakarta Sans -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <style>
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    .glass-card {
-      background: rgba(255, 255, 255, 0.72);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.6);
-    }
-    .dark .glass-card {
-      background: rgba(15, 23, 42, 0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .glass-nav {
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-    }
-    .dark .glass-nav {
-      background: rgba(15, 23, 42, 0.85);
-    }
-  </style>
-</head>
-
-<body class="bg-slate-50 text-slate-800 dark:bg-[#0b0f19] dark:text-slate-100 transition-colors duration-300 min-h-screen relative overflow-x-hidden selection:bg-sky-500 selection:text-white">
-
-  <!-- Ambient Blurred Background Lights -->
-  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none -z-10 overflow-hidden">
-    <div class="absolute -top-24 -left-20 w-96 h-96 bg-sky-400/20 dark:bg-sky-500/10 rounded-full blur-3xl animate-blob"></div>
-    <div class="absolute top-1/3 -right-24 w-96 h-96 bg-indigo-400/20 dark:bg-indigo-500/10 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
-    <div class="absolute -bottom-24 left-1/4 w-96 h-96 bg-purple-400/20 dark:bg-purple-500/10 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
-  </div>
-
-  <!-- Toast Notification System -->
-  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-3 px-5 py-3 rounded-2xl bg-slate-900/90 text-white dark:bg-white dark:text-slate-900 shadow-2xl backdrop-blur-md border border-white/10 dark:border-slate-800">
-    <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
-    <span id="toastMsg" class="text-sm font-semibold">Success!</span>
-  </div>
-
-  <!-- Sticky Modern Navbar -->
-  <header class="sticky top-0 z-40 w-full border-b border-slate-200/60 dark:border-slate-800/80 glass-nav transition-colors duration-300">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-      <a href="#hero" class="flex items-center gap-2 group">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white font-bold text-lg shadow-md shadow-sky-500/25 group-hover:scale-105 transition-transform">
-          IS
-        </div>
-        <span class="font-bold tracking-tight text-lg text-slate-900 dark:text-white">Iqra<span class="text-sky-500">.</span></span>
-      </a>
-
-      <!-- Desktop Nav Links -->
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600 dark:text-slate-300">
-        <a href="#about" class="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">About</a>
-        <a href="#skills" class="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">Skills</a>
-        <a href="#projects" class="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">Projects</a>
-        <a href="#contact" class="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">Contact</a>
-      </nav>
-
-      <!-- Right Actions: Theme Toggle & Contact Button -->
-      <div class="flex items-center gap-3">
-        <!-- Dark/Light Theme Button -->
-        <button id="themeToggle" aria-label="Toggle Theme" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center transition-colors">
-          <i id="themeIcon" class="fa-solid fa-moon text-base"></i>
-        </button>
-
-        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-sky-500 hover:bg-sky-600 text-white text-xs sm:text-sm font-semibold shadow-md shadow-sky-500/25 hover:shadow-sky-500/40 active:scale-95 transition-all">
-          <span>Let's Talk</span>
-          <i class="fa-solid fa-arrow-right text-xs"></i>
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section id="hero" class="relative pt-12 pb-16 sm:pt-20 sm:pb-24 max-w-6xl mx-auto px-4 sm:px-6">
-    <div class="flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
-      
-      <!-- Text Intro -->
-      <div class="flex-1 text-center lg:text-left space-y-6">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-sky-50 text-sky-700 border border-sky-200/80 dark:bg-sky-950/40 dark:text-sky-300 dark:border-sky-800/60 shadow-sm">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          Available for Freelance & Full-Time Work
-        </div>
-
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
-          Hi, I'm <span class="bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-600 bg-clip-text text-transparent">Iqra Sharif</span>
-        </h1>
-
-        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 font-normal leading-relaxed max-w-xl mx-auto lg:mx-0">
-          A passionate <strong class="text-slate-900 dark:text-white font-semibold">Web Designer & Frontend Developer</strong> dedicated to turning complex concepts into elegant, minimalist, and user-centric digital experiences.
-        </p>
-
-        <!-- CTA Buttons -->
-        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
-          <!-- WhatsApp Contact Button -->
-          <a href="https://wa.me/" target="_blank" rel="noopener noreferrer"
-             class="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white text-sm font-semibold flex items-center gap-2 shadow-lg shadow-emerald-600/25 transition-all">
-            <i class="fa-brands fa-whatsapp text-lg"></i>
-            <span>Chat on WhatsApp</span>
-          </a>
-
-          <!-- Copy Email Quick Action -->
-          <button id="copyEmailHeroBtn" type="button"
-             class="px-5 py-3 rounded-xl bg-white hover:bg-slate-100 active:scale-95 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-white text-slate-800 text-sm font-semibold border border-slate-200 dark:border-slate-700 flex items-center gap-2 shadow-sm transition-all">
-            <i class="fa-regular fa-copy text-sky-500"></i>
-            <span id="heroCopyText">Copy Email</span>
-          </button>
-        </div>
-
-        <!-- Social Badges -->
-        <div class="flex items-center justify-center lg:justify-start gap-4 pt-3 text-slate-400 dark:text-slate-500">
-          <span class="text-xs uppercase font-bold tracking-widest text-slate-400 dark:text-slate-500">Find Me On:</span>
-          <a href="https://github.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-lg flex items-center justify-center hover:text-slate-900 dark:hover:text-white transition-colors" title="GitHub">
-            <i class="fa-brands fa-github text-lg"></i>
-          </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-lg flex items-center justify-center hover:text-[#0a66c2] transition-colors" title="LinkedIn">
-            <i class="fa-brands fa-linkedin text-lg"></i>
-          </a>
-          <a href="https://behance.net" target="_blank" rel="noopener" class="w-8 h-8 rounded-lg flex items-center justify-center hover:text-[#053eff] transition-colors" title="Behance">
-            <i class="fa-brands fa-behance text-lg"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Hero Visual / Floating Profile Card -->
-      <div class="flex-1 flex justify-center relative">
-        <div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-3xl p-2 bg-gradient-to-tr from-sky-400 via-indigo-500 to-purple-500 shadow-2xl shadow-sky-500/20 animate-float">
-          <!-- Glass Core Avatar Wrapper -->
-          <div class="w-full h-full rounded-[22px] bg-white dark:bg-slate-900 p-6 flex flex-col items-center justify-center text-center shadow-inner relative overflow-hidden">
-            <!-- Background Glow inside avatar frame -->
-            <div class="absolute -top-10 -right-10 w-32 h-32 bg-sky-400/20 rounded-full blur-xl"></div>
-            
-            <!-- Stylized Avatar Icon / Initials -->
-            <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-tr from-sky-100 to-indigo-100 dark:from-slate-800 dark:to-slate-700 border-4 border-white dark:border-slate-800 shadow-md flex items-center justify-center mb-4">
-              <span class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-sky-600 to-indigo-600">IS</span>
-            </div>
-
-            <h3 class="font-bold text-lg text-slate-800 dark:text-white">Iqra Sharif</h3>
-            <p class="text-xs text-sky-600 dark:text-sky-400 font-semibold tracking-wide">UI/UX & Frontend Developer</p>
-            
-            <div class="mt-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-[11px] text-slate-600 dark:text-slate-300">
-              <i class="fa-solid fa-code text-indigo-500"></i>
-              <span>Modern Web Solutions</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="py-16 max-w-6xl mx-auto px-4 sm:px-6">
-    <div class="text-center max-w-xl mx-auto mb-12">
-      <h2 class="text-xs font-bold uppercase tracking-widest text-sky-500 mb-2">My Toolkit</h2>
-      <p class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-        Skills, Tools & Technologies
-      </p>
-      <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">
-        Equipped with modern development workflows to deliver responsive, accessible, and fast websites.
-      </p>
-    </div>
-
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-      <!-- Skill 1 -->
-      <div class="glass-card p-5 rounded-2xl flex items-center gap-4 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-        <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-600 flex items-center justify-center text-2xl">
-          <i class="fa-brands fa-html5"></i>
-        </div>
-        <div>
-          <h4 class="font-bold text-sm text-slate-800 dark:text-white">HTML5</h4>
-          <span class="text-xs text-slate-500">Semantic & SEO</span>
-        </div>
-      </div>
-
-      <!-- Skill 2 -->
-      <div class="glass-card p-5 rounded-2xl flex items-center gap-4 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-        <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-600 flex items-center justify-center text-2xl">
-          <i class="fa-brands fa-css3-alt"></i>
-        </div>
-        <div>
-          <h4 class="font-bold text-sm text-slate-800 dark:text-white">CSS3 / SASS</h4>
-          <span class="text-xs text-slate-500">Animations & Grid</span>
-        </div>
-      </div>
-
-      <!-- Skill 3 -->
-      <div class="glass-card p-5 rounded-2xl flex items-center gap-4 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center text-2xl">
-          <i class="fa-solid fa-wind"></i>
-        </div>
-        <div>
-          <h4 class="font-bold text-sm text-slate-800 dark:text-white">Tailwind CSS</h4>
-          <span class="text-xs text-slate-500">Modern Utility Design</span>
-        </div>
-      </div>
-
-      <!-- Skill 4 -->
-      <div class="glass-card p-5 rounded-2xl flex items-center gap-4 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-        <div class="w-12 h-12 rounded-xl bg-yellow-500/10 text-yellow-500 flex items-center justify-center text-2xl">
-          <i class="fa-brands fa-js"></i>
-        </div>
-        <div>
-          <h4 class="font-bold text-sm text-slate-800 dark:text-white">JavaScript (ES6+)</h4>
-          <span class="text-xs text-slate-500">Dynamic & Interactive</span>
-        </div>
-      </div>
-
-      <!-- Skill 5 -->
-      <div class="glass-card p-5 rounded-2xl flex items-center gap-4 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-        <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-500 flex items-center justify-center text-2xl">
-          <i class="fa-brands fa-react"></i>
-        </div>
-        <div>
-          <h4 class="font-bold text-sm text-slate-800 dark:text-white">React.js</h4>
-          <span class="text-xs text-slate-500">Component Architectures</span>
-        </div>
-      </div>
-
-      <!-- Skill 6 -->
-      <div class="glass-card p-5 rounded-2xl flex items-center gap-4 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-        <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-600 flex items-center justify-center text-2xl">
-          <i class="fa-brands fa-figma"></i>
-        </div>
-        <div>
-          <h4 class="font-bold text-sm text-slate-800 dark:text-white">Figma & UI/UX</h4>
-          <span class="text-xs text-slate-500">Wireframes & Mockups</span>
-        </div>
-      </div>
-
-      <!-- Skill 7 -->
-      <div class="glass-card p-5 rounded-2xl flex items-center gap-4 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-        <div class="w-12 h-12 rounded-xl bg-slate-900/10 text-slate-800 dark:text-slate-200 flex items-center justify-center text-2xl">
-          <i class="fa-brands fa-git-alt text-red-500"></i>
-        </div>
-        <div>
-          <h4 class="font-bold text-sm text-slate-800 dark:text-white">Git & GitHub</h4>
-          <span class="text-xs text-slate-500">Version Control</span>
-        </div>
-      </div>
-
-      <!-- Skill 8 -->
-      <div class="glass-card p-5 rounded-2xl flex items-center gap-4 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-2xl">
-          <i class="fa-solid fa-mobile-screen"></i>
-        </div>
-        <div>
-          <h4 class="font-bold text-sm text-slate-800 dark:text-white">Responsive Web</h4>
-          <span class="text-xs text-slate-500">Mobile First Layouts</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured Projects Section -->
-  <section id="projects" class="py-16 max-w-6xl mx-auto px-4 sm:px-6">
-    <div class="text-center max-w-xl mx-auto mb-12">
-      <h2 class="text-xs font-bold uppercase tracking-widest text-sky-500 mb-2">Portfolio</h2>
-      <p class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-        Selected Recent Work
-      </p>
-      <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">
-        A preview of crafted web experiences, landing pages, and web applications.
-      </p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Project 1 -->
-      <div class="glass-card rounded-2xl overflow-hidden hover:-translate-y-1.5 transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col">
-        <div class="h-44 bg-gradient-to-br from-sky-400 via-indigo-500 to-purple-600 flex items-center justify-center text-white relative p-6">
-          <div class="absolute inset-0 bg-black/10"></div>
-          <div class="relative text-center">
-            <i class="fa-solid fa-chart-line text-4xl mb-2"></i>
-            <p class="text-xs uppercase font-bold tracking-wider opacity-90">SaaS Platform</p>
-          </div>
-        </div>
-        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-          <div>
-            <div class="flex items-center gap-2 mb-2">
-              <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-sky-100 text-sky-700 dark:bg-sky-950 dark:text-sky-300">React</span>
-              <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300">Tailwind</span>
-            </div>
-            <h3 class="text-lg font-bold text-slate-800 dark:text-white">Analytics Dashboard</h3>
-            <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
-              Real-time analytics UI complete with interactive metric cards, graph visualization, and adaptive dark mode.
-            </p>
-          </div>
-          <div class="pt-2 flex items-center justify-between border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-sky-600 dark:text-sky-400">
-            <a href="#" class="hover:underline flex items-center gap-1.5">Live Preview <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
-            <a href="#" class="text-slate-500 hover:text-slate-800 dark:hover:text-white flex items-center gap-1.5">Code <i class="fa-brands fa-github text-[11px]"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 2 -->
-      <div class="glass-card rounded-2xl overflow-hidden hover:-translate-y-1.5 transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col">
-        <div class="h-44 bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-600 flex items-center justify-center text-white relative p-6">
-          <div class="absolute inset-0 bg-black/10"></div>
-          <div class="relative text-center">
-            <i class="fa-solid fa-bag-shopping text-4xl mb-2"></i>
-            <p class="text-xs uppercase font-bold tracking-wider opacity-90">E-Commerce</p>
-          </div>
-        </div>
-        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-          <div>
-            <div class="flex items-center gap-2 mb-2">
-              <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">JavaScript</span>
-              <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-teal-100 text-teal-700 dark:bg-teal-950 dark:text-teal-300">Responsive</span>
-            </div>
-            <h3 class="text-lg font-bold text-slate-800 dark:text-white">Minimalist Storefront</h3>
-            <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
-              Clean e-commerce product showcase with instant cart interaction, smooth micro-animations, and fast checkout flow.
-            </p>
-          </div>
-          <div class="pt-2 flex items-center justify-between border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-sky-600 dark:text-sky-400">
-            <a href="#" class="hover:underline flex items-center gap-1.5">Live Preview <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
-            <a href="#" class="text-slate-500 hover:text-slate-800 dark:hover:text-white flex items-center gap-1.5">Code <i class="fa-brands fa-github text-[11px]"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 3 -->
-      <div class="glass-card rounded-2xl overflow-hidden hover:-translate-y-1.5 transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col">
-        <div class="h-44 bg-gradient-to-br from-rose-400 via-pink-500 to-purple-600 flex items-center justify-center text-white relative p-6">
-          <div class="absolute inset-0 bg-black/10"></div>
-          <div class="relative text-center">
-            <i class="fa-solid fa-layer-group text-4xl mb-2"></i>
-            <p class="text-xs uppercase font-bold tracking-wider opacity-90">Design System</p>
-          </div>
-        </div>
-        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-          <div>
-            <div class="flex items-center gap-2 mb-2">
-              <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-pink-100 text-pink-700 dark:bg-pink-950 dark:text-pink-300">Figma</span>
-              <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-purple-100 text-purple-700 dark:bg-purple-950 dark:text-purple-300">CSS Tokens</span>
-            </div>
-            <h3 class="text-lg font-bold text-slate-800 dark:text-white">Nova Component Library</h3>
-            <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
-              Curated UI kit and reusable design token system engineered for fast, consistent web development.
-            </p>
-          </div>
-          <div class="pt-2 flex items-center justify-between border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-sky-600 dark:text-sky-400">
-            <a href="#" class="hover:underline flex items-center gap-1.5">Live Preview <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
-            <a href="#" class="text-slate-500 hover:text-slate-800 dark:hover:text-white flex items-center gap-1.5">Case Study <i class="fa-solid fa-file-lines text-[11px]"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact & Message Section -->
-  <section id="contact" class="py-16 max-w-4xl mx-auto px-4 sm:px-6">
-    <div class="glass-card rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden">
-      
-      <div class="text-center max-w-lg mx-auto mb-8">
-        <h2 class="text-xs font-bold uppercase tracking-widest text-sky-500 mb-2">Get in Touch</h2>
-        <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
-          Let’s Build Something Amazing Together
-        </h3>
-        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-2">
-          Have a question or a project idea? Send a quick message or reach out via WhatsApp!
-        </p>
-      </div>
-
-      <!-- Quick Action Badges -->
-      <div class="flex flex-wrap items-center justify-center gap-3 mb-8">
-        <a href="https://wa.me/" target="_blank" rel="noopener noreferrer"
-           class="px-4 py-2.5 rounded-xl bg-[#25D366] text-white text-xs font-semibold flex items-center gap-2 hover:bg-[#20ba59] transition shadow-sm">
-          <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Me
-        </a>
-        <button id="copyEmailContactBtn" type="button"
-           class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-slate-700 flex items-center gap-2 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
-          <i class="fa-regular fa-envelope text-sky-500"></i>
-          <span id="contactCopyText">Copy: iqrasharif@example.com</span>
-        </button>
-      </div>
-
-      <!-- Contact Form -->
-      <form id="portfolioContactForm" onsubmit="handleMessageSubmit(event)" class="space-y-4 max-w-lg mx-auto">
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Your Name</label>
-          <input type="text" id="contactName" required placeholder="Enter your full name" 
-                 class="w-full text-xs sm:text-sm px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
-        </div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iqra Sharif Kalhoro | Bio-Data</title>
+    <style>
+        /* Importing Futuristic Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap');
         
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Your Email</label>
-          <input type="email" id="contactEmail" required placeholder="name@example.com" 
-                 class="w-full text-xs sm:text-sm px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Message</label>
-          <textarea id="contactText" rows="3" required placeholder="Tell me about your project or inquiry..." 
-                    class="w-full text-xs sm:text-sm px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500 transition"></textarea>
-        </div>
-
-        <button type="submit" 
-                class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 text-white font-semibold text-xs sm:text-sm shadow-md shadow-sky-500/25 active:scale-[0.99] transition-all flex items-center justify-center gap-2">
-          <i class="fa-regular fa-paper-plane"></i>
-          <span>Send Message</span>
-        </button>
-      </form>
-
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="border-t border-slate-200/80 dark:border-slate-800/80 py-8 px-4 text-center">
-    <p class="text-xs text-slate-500 dark:text-slate-400">
-      Designed & Developed with ❤️ by <strong class="text-slate-800 dark:text-slate-200">Iqra Sharif</strong> • © 2026 All Rights Reserved
-    </p>
-  </footer>
-
-  <!-- Script logic -->
-  <script>
-    const userEmail = "iqrasharif@example.com";
-
-    // Toast Utility Function
-    function triggerToast(message, isSuccess = true) {
-      const toast = document.getElementById('toastNotification');
-      const toastMsg = document.getElementById('toastMsg');
-      const toastIcon = document.getElementById('toastIcon');
-
-      toastMsg.innerText = message;
-      if (isSuccess) {
-        toastIcon.className = "fa-solid fa-circle-check text-emerald-400 text-lg";
-      } else {
-        toastIcon.className = "fa-solid fa-triangle-exclamation text-amber-400 text-lg";
-      }
-
-      toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
-      toast.classList.add('translate-y-0', 'opacity-100');
-
-      setTimeout(() => {
-        toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
-        toast.classList.remove('translate-y-0', 'opacity-100');
-      }, 2500);
-    }
-
-    // Safe Email Copy helper
-    function copyEmailToClipboard(btnLabelId, defaultText) {
-      const tempTextArea = document.createElement('textarea');
-      tempTextArea.value = userEmail;
-      tempTextArea.style.position = 'fixed';
-      tempTextArea.style.opacity = '0';
-      document.body.appendChild(tempTextArea);
-      tempTextArea.select();
-
-      try {
-        document.execCommand('copy');
-        triggerToast("Email copied to clipboard!");
-        const labelElem = document.getElementById(btnLabelId);
-        if (labelElem) {
-          labelElem.innerText = "Copied!";
-          setTimeout(() => {
-            labelElem.innerText = defaultText;
-          }, 2000);
+        :root {
+            --primary: #00f3ff;
+            --secondary: #bc13fe;
+            --bg: #050507;
+            --surface: rgba(15, 15, 20, 0.6);
         }
-      } catch (err) {
-        triggerToast("Email: " + userEmail, true);
-      }
-      document.body.removeChild(tempTextArea);
-    }
+        
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        body {
+            background-color: var(--bg);
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(188, 19, 254, 0.1), transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(0, 243, 255, 0.1), transparent 30%);
+            background-attachment: fixed;
+        }
 
-    // Email Buttons
-    document.getElementById('copyEmailHeroBtn').addEventListener('click', () => {
-      copyEmailToClipboard('heroCopyText', 'Copy Email');
-    });
-    document.getElementById('copyEmailContactBtn').addEventListener('click', () => {
-      copyEmailToClipboard('contactCopyText', 'Copy: ' + userEmail);
-    });
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
 
-    // Dark Mode Toggle
-    const themeToggle = document.getElementById('themeToggle');
-    const themeIcon = document.getElementById('themeIcon');
-    const htmlElem = document.documentElement;
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 1.2s ease-out;
+        }
 
-    themeToggle.addEventListener('click', () => {
-      htmlElem.classList.toggle('dark');
-      if (htmlElem.classList.contains('dark')) {
-        themeIcon.className = "fa-solid fa-sun text-amber-400 text-base";
-      } else {
-        themeIcon.className = "fa-solid fa-moon text-slate-600 dark:text-slate-300 text-base";
-      }
-    });
+        .cyber-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            color: #fff;
+            text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
 
-    // Form Submission Handler
-    function handleMessageSubmit(event) {
-      event.preventDefault();
-      const sender = document.getElementById('contactName').value;
-      triggerToast(`Thank you, ${sender}! Your message has been sent.`);
-      document.getElementById('portfolioContactForm').reset();
-    }
-  </script>
+        .subtitle {
+            font-size: 1.5rem;
+            color: #aaa;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .section {
+            background: var(--surface);
+            border: 1px solid rgba(0, 243, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 15px;
+            padding: 35px;
+            margin-bottom: 35px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Top-left corner neon accent */
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.2);
+            border-color: rgba(0, 243, 255, 0.4);
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(188, 19, 254, 0.3);
+            padding-bottom: 10px;
+            text-shadow: 0 0 8px rgba(188, 19, 254, 0.6);
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: #cfcfcf;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-tag {
+            background: rgba(0, 243, 255, 0.05);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            margin: 6px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            background: rgba(0, 243, 255, 0.2);
+            box-shadow: 0 0 15px var(--primary);
+            transform: scale(1.05);
+        }
+
+        .project-card {
+            background: rgba(0,0,0,0.4);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid var(--secondary);
+            transition: 0.3s ease;
+        }
+
+        .project-card:hover {
+            background: rgba(188, 19, 254, 0.05);
+            border-left-color: var(--primary);
+        }
+
+        .project-card h3 {
+            color: #fff;
+            margin-bottom: 12px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .highlight {
+            color: var(--primary);
+            text-shadow: 0 0 5px var(--primary);
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <header>
+            <h1 class="cyber-name">Iqra Sharif Kalhoro</h1>
+            <p class="subtitle">Web Designer & Author</p>
+        </header>
+
+        <!-- About Section -->
+        <div class="section">
+            <h2>>> SYSTEM.ABOUT_ME</h2>
+            <p>Hello! Main ek creative Web Designer aur Author hoon. Modern, responsive layouts design karna aur unique ideas ko reality mein convert karna mera passion hai. Meri expertise clean code, high-tech aesthetics, aur engaging user experiences create karne mein hai.</p>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="section">
+            <h2>>> TECH_STACK & SKILLS</h2>
+            <div>
+                <span class="skill-tag">HTML5 / CSS3</span>
+                <span class="skill-tag">Web Layout Design</span>
+                <span class="skill-tag">UI / UX</span>
+                <span class="skill-tag">MS Access</span>
+                <span class="skill-tag">Computer Hardware</span>
+                <span class="skill-tag">Creative Writing</span>
+            </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="section">
+            <h2>>> INITIATED_PROJECTS</h2>
+            <div class="grid">
+                <div class="project-card">
+                    <h3>Perfect Life (Book)</h3>
+                    <p>Self-help aur personal growth par based ek self-authored book, jo Amazon publishing standards ke mutabiq structure ki gayi hai.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Business Web Layouts</h3>
+                    <p>Clothing brands, makeup services, aur bookstores ke liye modern aur responsive single-page frontend builds.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="section">
+            <h2>>> CONNECTION_PROTOCOL</h2>
+            <div class="contact-info">
+                <p>Location: <span class="highlight">Larkana, Sindh</span></p>
+                <p>Email: <span class="highlight">your.email@example.com</span></p>
+                <p>Status: <span class="highlight">Available for Freelance / Publishing</span></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript for interactive background elements -->
+    <script>
+        // Subtle parallax effect on mouse move for high-tech feel
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            document.body.style.backgroundImage = `
+                radial-gradient(circle at ${x * 100}% ${y * 100}%, rgba(188, 19, 254, 0.15), transparent 30%),
+                radial-gradient(circle at ${(1 - x) * 100}% ${(1 - y) * 100}%, rgba(0, 243, 255, 0.15), transparent 30%)
+            `;
+        });
+    </script>
 </body>
 </html>
