@@ -1,95 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iqra Sharif Kalhoro | Bio-Data</title>
+    <title>Iqra Sharif Kalhoro | Student Biodata</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Importing Futuristic Fonts */
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap');
-        
+        /* CSS Variables for Dark/Light Mode */
         :root {
             --primary: #00f3ff;
             --secondary: #bc13fe;
             --bg: #050507;
+            --text: #ffffff;
+            --text-muted: #cfcfcf;
             --surface: rgba(15, 15, 20, 0.6);
+            --border: rgba(0, 243, 255, 0.15);
+            --shadow: rgba(0, 0, 0, 0.5);
         }
-        
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
+
+        [data-theme="light"] {
+            --primary: #0056b3;
+            --secondary: #8e44ad;
+            --bg: #f4f7f6;
+            --text: #1a1a2e;
+            --text-muted: #4a4a4a;
+            --surface: rgba(255, 255, 255, 0.8);
+            --border: rgba(0, 86, 179, 0.2);
+            --shadow: rgba(0, 0, 0, 0.1);
         }
-        
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
         body {
             background-color: var(--bg);
-            color: #fff;
+            color: var(--text);
             font-family: 'Rajdhani', sans-serif;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(188, 19, 254, 0.1), transparent 30%),
-                radial-gradient(circle at 90% 80%, rgba(0, 243, 255, 0.1), transparent 30%);
-            background-attachment: fixed;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 50px 20px;
+        /* Fixed Controls (Theme & Download) */
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 50px;
-            animation: fadeInDown 1.2s ease-out;
-        }
-
-        .cyber-name {
+        button {
+            background: var(--surface);
+            color: var(--text);
+            border: 1px solid var(--primary);
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
             font-family: 'Orbitron', sans-serif;
-            font-size: 3.5rem;
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: var(--primary);
             color: #fff;
-            text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
-            margin-bottom: 10px;
-            letter-spacing: 2px;
+            box-shadow: 0 0 15px var(--primary);
         }
 
-        .subtitle {
-            font-size: 1.5rem;
-            color: #aaa;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+        /* Container & Layout */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px 40px;
         }
 
+        /* Sections */
         .section {
             background: var(--surface);
-            border: 1px solid rgba(0, 243, 255, 0.15);
+            border: 1px solid var(--border);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             border-radius: 15px;
             padding: 35px;
             margin-bottom: 35px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-            transition: all 0.4s ease;
+            box-shadow: 0 8px 32px var(--shadow);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
             position: relative;
-            overflow: hidden;
         }
 
-        /* Top-left corner neon accent */
+        .section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .section::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 50px;
-            height: 3px;
+            height: 4px;
             background: var(--primary);
-            box-shadow: 0 0 10px var(--primary);
+            border-top-left-radius: 15px;
         }
 
-        .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 25px rgba(0, 243, 255, 0.2);
-            border-color: rgba(0, 243, 255, 0.4);
+        /* Typography */
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            color: var(--text);
+            text-shadow: 0 0 10px var(--primary);
+            margin-bottom: 10px;
+            text-align: center;
         }
 
         h2 {
@@ -97,145 +121,277 @@
             font-size: 1.8rem;
             color: var(--secondary);
             margin-bottom: 25px;
-            border-bottom: 1px solid rgba(188, 19, 254, 0.3);
+            border-bottom: 1px solid var(--border);
             padding-bottom: 10px;
-            text-shadow: 0 0 8px rgba(188, 19, 254, 0.6);
         }
 
-        p {
-            font-size: 1.2rem;
-            line-height: 1.7;
-            color: #cfcfcf;
+        .special-title {
+            color: var(--primary);
+            text-shadow: 0 0 8px var(--primary);
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+        p, li { font-size: 1.2rem; line-height: 1.7; color: var(--text-muted); }
+        ul { padding-left: 20px; }
+
+        /* Home Profile */
+        .profile-container {
+            text-align: center;
+            margin-bottom: 20px;
         }
 
-        .skill-tag {
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--primary);
+            box-shadow: 0 0 20px var(--primary);
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        /* Grid Layouts */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+
+        /* Tags */
+        .tag {
             background: rgba(0, 243, 255, 0.05);
             border: 1px solid var(--primary);
-            color: var(--primary);
-            padding: 10px 20px;
-            border-radius: 25px;
+            color: var(--text);
+            padding: 8px 15px;
+            border-radius: 20px;
             display: inline-block;
-            margin: 6px;
-            font-size: 1.1rem;
+            margin: 5px;
             font-weight: 600;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            cursor: default;
         }
 
-        .skill-tag:hover {
-            background: rgba(0, 243, 255, 0.2);
-            box-shadow: 0 0 15px var(--primary);
-            transform: scale(1.05);
+        /* Journey Timeline */
+        .timeline { border-left: 3px solid var(--primary); padding-left: 20px; margin-left: 10px; }
+        .timeline-item { margin-bottom: 20px; position: relative; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -28px; top: 5px;
+            width: 12px; height: 12px; background: var(--secondary);
+            border-radius: 50%; box-shadow: 0 0 10px var(--secondary);
         }
 
-        .project-card {
-            background: rgba(0,0,0,0.4);
-            padding: 25px;
-            border-radius: 12px;
+        /* Cards */
+        .card {
+            background: rgba(0,0,0,0.1);
+            padding: 20px;
+            border-radius: 10px;
             border-left: 4px solid var(--secondary);
-            transition: 0.3s ease;
         }
 
-        .project-card:hover {
-            background: rgba(188, 19, 254, 0.05);
-            border-left-color: var(--primary);
+        /* Back to Top */
+        #backToTop {
+            position: fixed; bottom: 30px; right: 30px;
+            display: none; border-radius: 50%; width: 50px; height: 50px;
+            font-size: 1.5rem; text-align: center; line-height: 25px;
         }
 
-        .project-card h3 {
-            color: #fff;
-            margin-bottom: 12px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.4rem;
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            h1 { font-size: 2.2rem; }
+            .controls { top: 10px; right: 10px; }
+            button { font-size: 0.8rem; padding: 8px 10px; }
         }
 
-        .contact-info p {
-            margin-bottom: 10px;
-            font-family: 'Orbitron', sans-serif;
-        }
-
-        .highlight {
-            color: var(--primary);
-            text-shadow: 0 0 5px var(--primary);
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-40px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Print Styles for PDF Download */
+        @media print {
+            .controls, #backToTop { display: none !important; }
+            body { background: #fff; color: #000; }
+            .section { page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; opacity: 1; transform: none; }
+            * { text-shadow: none !important; }
         }
     </style>
 </head>
 <body>
+
+    <!-- Top Controls -->
+    <div class="controls">
+        <button onclick="toggleTheme()">🌓 Theme</button>
+        <button onclick="window.print()">📥 Download PDF</button>
+    </div>
+
     <div class="container">
-        <!-- Hero Section -->
-        <header>
-            <h1 class="cyber-name">Iqra Sharif Kalhoro</h1>
-            <p class="subtitle">Web Designer & Author</p>
-        </header>
-
-        <!-- About Section -->
-        <div class="section">
-            <h2>>> SYSTEM.ABOUT_ME</h2>
-            <p>Hello! Main ek creative Web Designer aur Author hoon. Modern, responsive layouts design karna aur unique ideas ko reality mein convert karna mera passion hai. Meri expertise clean code, high-tech aesthetics, aur engaging user experiences create karne mein hai.</p>
+        <!-- Home Section -->
+        <div class="section show profile-container">
+            <!-- Add your image path below -->
+            <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-pic">
+            <h1>Iqra Sharif Kalhoro</h1>
+            <p style="font-size: 1.4rem; color: var(--primary);">Welcome to my digital space!</p>
+            <p>Creative Web Designer, Author & Passionate Student</p>
         </div>
 
-        <!-- Skills Section -->
-        <div class="section">
-            <h2>>> TECH_STACK & SKILLS</h2>
+        <!-- About Me & Personal Info -->
+        <div class="grid-2">
+            <div class="section show">
+                <h2>About Me</h2>
+                <p>Main ek enthusiastic student hoon jise technology aur literature dono ka shauq hai. Modern web layouts design karna aur apne ideas ko words mein likhna meri pehchan hai. Main hamesha nayi skills seekhne aur apne boundaries ko push karne mein believe karti hoon.</p>
+            </div>
+            <div class="section show">
+                <h2>Personal Info</h2>
+                <ul>
+                    <li><strong>Location:</strong> Larkana, Sindh, Pakistan</li>
+                    <li><strong>Nationality:</strong> Pakistani</li>
+                    <li><strong>Languages:</strong> Urdu, English, Sindhi</li>
+                    <li><strong>DOB:</strong> April 4, 2005</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Special Section 1: My Journey -->
+        <div class="section scroll-anim">
+            <h2 class="special-title">🌟 My Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Exploring History & Inspiration</h3>
+                    <p>Visiting historical places like Mohenjo-daro ne mujhe storytelling aur design ki taraf inspire kiya.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Vocational Training (2026)</h3>
+                    <p>Computer Hardware aur MS Access field management ki training complete ki, jisse tech basics strong hue.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Writing & Web Design (Present)</h3>
+                    <p>Apni book "Perfect Life" par kaam kiya aur clothing/makeup brands ke liye single-page layouts design karna shuru kiye.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education & Certificates -->
+        <div class="grid-2">
+            <div class="section scroll-anim">
+                <h2>Education</h2>
+                <div class="card">
+                    <h3>Student Level</h3>
+                    <p>College / Vocational Education</p>
+                    <p><strong>Focus:</strong> Computer Hardware, Input/Output Operations, MS Access</p>
+                </div>
+            </div>
+            <div class="section scroll-anim">
+                <h2>Certificates & Courses</h2>
+                <ul>
+                    <li>Vocational Training: Computer Hardware (Aug-Sep 2026)</li>
+                    <li>MS Access Field Management Workshop</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Special Section 2: Achievements -->
+        <div class="section scroll-anim">
+            <h2 class="special-title">🏆 My Achievements</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Manuscript Completion</h3>
+                    <p>Apni self-help book "Perfect Life" ke chapters successfully likh kar complete kiye.</p>
+                </div>
+                <div class="card">
+                    <h3>Frontend Builds</h3>
+                    <p>Local businesses ke liye responsive HTML/CSS layouts design kiye.</p>
+                </div>
+                <div class="card">
+                    <h3>Tech Fundamentals</h3>
+                    <p>Hardware operations aur database management (MS Access) mein practical proficiency haasil ki.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills, Hobbies & Interests -->
+        <div class="section scroll-anim">
+            <h2>Skills & Interests</h2>
+            <div style="margin-bottom: 20px;">
+                <h3 style="margin-bottom: 10px; color: var(--text);">My Skills:</h3>
+                <span class="tag">HTML / CSS</span>
+                <span class="tag">Web Design</span>
+                <span class="tag">Creative Writing</span>
+                <span class="tag">MS Access</span>
+                <span class="tag">Computer Hardware</span>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <h3 style="margin-bottom: 10px; color: var(--text);">My Hobbies:</h3>
+                <span class="tag">Reading & Writing</span>
+                <span class="tag">UI/UX Designing</span>
+                <span class="tag">Exploring Historical Sites</span>
+                <span class="tag">Baking / Desserts</span>
+            </div>
             <div>
-                <span class="skill-tag">HTML5 / CSS3</span>
-                <span class="skill-tag">Web Layout Design</span>
-                <span class="skill-tag">UI / UX</span>
-                <span class="skill-tag">MS Access</span>
-                <span class="skill-tag">Computer Hardware</span>
-                <span class="skill-tag">Creative Writing</span>
+                <h3 style="margin-bottom: 10px; color: var(--text);">My Interests:</h3>
+                <span class="tag">E-Commerce Tech (PWAs)</span>
+                <span class="tag">Literature</span>
+                <span class="tag">Technology Trends</span>
             </div>
         </div>
 
-        <!-- Projects Section -->
-        <div class="section">
-            <h2>>> INITIATED_PROJECTS</h2>
-            <div class="grid">
-                <div class="project-card">
+        <!-- Projects -->
+        <div class="section scroll-anim">
+            <h2>My Projects</h2>
+            <div class="grid-2">
+                <div class="card">
                     <h3>Perfect Life (Book)</h3>
-                    <p>Self-help aur personal growth par based ek self-authored book, jo Amazon publishing standards ke mutabiq structure ki gayi hai.</p>
+                    <p>Self-help category ki kitab. Amazon publishing format aur structure ke mutabiq tayyar ki ja rahi hai.</p>
                 </div>
-                <div class="project-card">
-                    <h3>Business Web Layouts</h3>
-                    <p>Clothing brands, makeup services, aur bookstores ke liye modern aur responsive single-page frontend builds.</p>
+                <div class="card">
+                    <h3>Business Portfolios</h3>
+                    <p>Clothing brands aur bookstores ke liye modern, visually appealing single-page websites.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Contact Section -->
-        <div class="section">
-            <h2>>> CONNECTION_PROTOCOL</h2>
-            <div class="contact-info">
-                <p>Location: <span class="highlight">Larkana, Sindh</span></p>
-                <p>Email: <span class="highlight">your.email@example.com</span></p>
-                <p>Status: <span class="highlight">Available for Freelance / Publishing</span></p>
+        <!-- Special Section 3: Future Goals -->
+        <div class="section scroll-anim">
+            <h2 class="special-title">🚀 My Future Goals</h2>
+            <p>Mera aim ek professional <strong>Full-Stack Web Developer</strong> banna hai aur apni web design skills ko mobile apps mein convert karna (PWAs, WhatsApp routing). Iske sath sath, main apni book <strong>"Perfect Life" ko Amazon par publish</strong> karke global audience tak pohnchana chahti hoon.</p>
+        </div>
+
+        <!-- Contact -->
+        <div class="section scroll-anim" style="text-align: center;">
+            <h2>Contact Me</h2>
+            <p>Email: <strong>iqrasharif@example.com</strong></p>
+            <p>Location: Larkana, Sindh</p>
+            <div style="margin-top: 15px;">
+                <span class="tag" style="cursor: pointer;">LinkedIn</span>
+                <span class="tag" style="cursor: pointer;">GitHub</span>
+                <span class="tag" style="cursor: pointer;">Instagram</span>
             </div>
         </div>
     </div>
-    
-    <!-- JavaScript for interactive background elements -->
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" onclick="window.scrollTo(0,0)">↑</button>
+
+    <!-- Interactive JavaScript -->
     <script>
-        // Subtle parallax effect on mouse move for high-tech feel
-        document.addEventListener('mousemove', (e) => {
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-            
-            document.body.style.backgroundImage = `
-                radial-gradient(circle at ${x * 100}% ${y * 100}%, rgba(188, 19, 254, 0.15), transparent 30%),
-                radial-gradient(circle at ${(1 - x) * 100}% ${(1 - y) * 100}%, rgba(0, 243, 255, 0.15), transparent 30%)
-            `;
-        });
+        // Dark/Light Theme Toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.setAttribute('data-theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+            }
+        }
+
+        // Scroll Animations (Intersection Observer)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.scroll-anim').forEach((el) => observer.observe(el));
+
+        // Back to Top Button Logic
+        window.onscroll = function() {
+            const btn = document.getElementById("backToTop");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        };
     </script>
 </body>
 </html>
