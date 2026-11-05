@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iqra Sharif Kalhoro | Student Biodata</title>
+    
+    <!-- PWA Manifest & Theme Color -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#00f3ff">
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -209,15 +214,14 @@
 
     <!-- Top Controls -->
     <div class="controls">
-        <button onclick="toggleTheme()">🌓 Theme</button>
+        <button onclick="toggleTheme()">☀️ Theme</button>
         <button onclick="window.print()">📥 Download PDF</button>
     </div>
 
     <div class="container">
         <!-- Home Section -->
         <div class="section show profile-container">
-            <!-- Add your image path below -->
-            <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-pic">
+            <img src="icon.png" alt="Profile Picture" class="profile-pic">
             <h1>Iqra Sharif Kalhoro</h1>
             <p style="font-size: 1.4rem; color: var(--primary);">Welcome to my digital space!</p>
             <p>Creative Web Designer, Author & Passionate Student</p>
@@ -242,7 +246,7 @@
 
         <!-- Special Section 1: My Journey -->
         <div class="section scroll-anim">
-            <h2 class="special-title">🌟 My Journey</h2>
+            <h2 class="special-title">🚀 My Journey</h2>
             <div class="timeline">
                 <div class="timeline-item">
                     <h3>Exploring History & Inspiration</h3>
@@ -340,7 +344,7 @@
 
         <!-- Special Section 3: Future Goals -->
         <div class="section scroll-anim">
-            <h2 class="special-title">🚀 My Future Goals</h2>
+            <h2 class="special-title">🎯 My Future Goals</h2>
             <p>Mera aim ek professional <strong>Full-Stack Web Developer</strong> banna hai aur apni web design skills ko mobile apps mein convert karna (PWAs, WhatsApp routing). Iske sath sath, main apni book <strong>"Perfect Life" ko Amazon par publish</strong> karke global audience tak pohnchana chahti hoon.</p>
         </div>
 
@@ -358,7 +362,7 @@
     </div>
 
     <!-- Back to Top Button -->
-    <button id="backToTop" onclick="window.scrollTo(0,0)">↑</button>
+    <button id="backToTop" onclick="window.scrollTo(0,0)">⬆️</button>
 
     <!-- Interactive JavaScript -->
     <script>
@@ -392,6 +396,21 @@
                 btn.style.display = "none";
             }
         };
+    </script>
+
+    <!-- PWA Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
     </script>
 </body>
 </html>
